@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Javascript Bàsic</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<!--google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container" style="max-width:500px; margin:auto; font-family: 'Nunito', sans-serif;">
+	
+    <h1 style="text-align:center">Sprint 03 - Nivell 1<br> JavaScript Bàsic</h1>
+    <script>
+        //N1 - Exercici 1 - Consola log
+        console.log("Hola Mundo");
+    </script>
+
+    <script>
+        //N1 - Exercici 2 - alert amb nom
+        alert("Hola em dic Bea!!!");
+    </script>
+    <h3>Exercici 3: Mostrar Nom i Cognom</h3>
+    <script>
+        //N1 - Exercici 3 - Mostrar nom i cognom
+        let name = "Beatriz";
+        let lastname = "Álvarez";
+        document.write (name +" "+ lastname);                
+    </script>
+    <br>
+    <hr>
+    <h3>Exercici 4: Resultat d'una suma</h3>
+    <script>
+        //N1 - Exercici 4 - Suma
+        let numberOne = 7;
+        let numberTwo = 3;
+        document.write ("La suma de " +  numberOne+ " " + "i " + numberTwo+ " és " + (numberOne+numberTwo));
+    </script>  
+    <br>
+    <hr>   
+    <script>
+        //N1 - Exercici 5 - Suspès o aprovat
+        let nota_examen = 10;
+        if (nota_examen>5) {
+            alert("Ets una crack!! has aprovat amb un " + nota_examen + "!!!");
+        } else { alert("ups! has tret només un " + nota_examen);
+        }
+    </script>
+    <h3>Exercici 6: Blau o Verd</h3>
+    <script>
+        //N1 - Exercici 6 - Blau o Verd
+        let color1 = "blau";
+        let color2 = "verd";
+        document.write ("Tinc un cotxe de color " + color1 +"<br>");
+
+        if (color1=="blau") {
+            let color1 = color2;
+            document.write ("Tinc un cotxe de color " + color1);
+        } 
+    </script>
+    <br>
+    <hr>
+    <h3>Exercici 6: o/u</h3> 
+    <script>
+        //N1 - Exercici 6 - o/u
+        const sentence = "Tinc un cotxe de color blau";
+        document.write (sentence +"<br>");
+        document.write (sentence.replace(/o/g, 'u'));
+        
+    </script>
+    <br>
+    <hr>
+    <h3>Exercici 7: array/bucle</h3> 
+    <script>
+        //N1 - Exercici 7 - array
+        
+        let objectes=["taula", "cadira", "ordinador", "llibreta"];
+        let i = 0;
+        
+        while (i<4) {
+            document.write("L'objecte " + objectes[i] + " " + "està a la posició" + " " + i + ". <br>");
+            i++;
+        } 
+    </script> 
+    <br>
+    <hr>
+    <h3>Exercici 8: Calculadora v1</h3> 
+    <script> 
+        //N1 - Exercici 8 - Calculadora
+        let suma="suma";
+        let resta="resta";
+        let multiplica="multiplica";
+
+        function calculadora (operador, valor1, valor2){
+                
+            if(operador=="suma"){ 
+                document.write("El resultat de "+valor1+"+"+valor2+" "+"és"+" "+(valor1+valor2)+"<br>");
+
+            } else if (operador=="resta") {
+                document.write("El resultat de "+valor1+"-"+valor2+" "+"és"+" "+(valor1-valor2)+"<br>");
+
+            }else if (operador=="multiplica"){
+                document.write("El resultat de "+valor1+"x"+valor2+" "+"és"+" "+(valor1*valor2)+"<br>");
+            }
+        }
+    
+        let resultatSuma = calculadora ("suma",40,20);
+        let resultatResta = calculadora ("resta",40,20);
+        let resultatMultiplica = calculadora ("multiplica",40,20);
+
+    </script>
+    <br>
+    <hr>
+            
+ </div>
+</body>
+</html>
