@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Calculator</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<!--google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container" style="max-width:500px; margin:auto; font-family: 'Nunito', sans-serif;">
+      <h1 style="text-align:center">Sprint 03 - Nivell 2<br> Calculadora</h1>
+      <!--interface calculadora-->
+      <form name="calculadora">
+        <label>Primer Número</label><br>
+        <input type="text" name="n1" value="0" size="12" placeholder="0" onkeypress="return filterFloat(event,this);">
+        <br>
+        <label>Segundo Número</label><br>
+        <input type="text" name="n2" value="0" size="12" placeholder="0" onkeypress="return filterFloat(event,this);">
+        <br>
+        <label>Operación</label><br>
+        <!--calculamos en un click-->
+        <input type="Button" name="" value=" + " onclick="calcula('+')">
+        <input type="Button" name="" value=" - " onclick="calcula('-')">
+        <input type="Button" name="" value=" x " onclick="calcula('*')">
+        <input type="Button" name="" value=" / " onclick="calcula('/')">
+        <br>
+        <label>Resultado</label><br>
+        <input type="text" name="resultado" value="0" size="12">
+      </form>    
+    <script>
+
+        //validamos que el valor introducido sea un número, que admita hasta 4 decimales y que su separador sera un punto.
+        function filterFloat(evt,input){
+        // Backspace = 8, Enter = 13, ‘0′ = 48, ‘9′ = 57, ','= 44, ‘.’ = 46, ‘-’ = 43
+        var key = window.Event ? evt.which : evt.keyCode;    
+        var chark = String.fromCharCode(key);
+        var tempValue = input.value+chark;
+        //comprobamos que el teclado corresponda a números
+        if(key >= 48 && key <= 57){
+            if(filter(tempValue) === false){
+                return false;                    
+            }else{       
+                return true;
+            }
+        }else{
+            //comprobamos que se trate de suprimir de enter o que el valor sea 0
+            if(key == 8 || key == 13 || key == 0) {     
+                return true; 
+                
+            // utilizamos punto para separar decimales?
+            }else if(key == 46) {
+                    if(filter(tempValue)=== false){
+                        return false;
+                    }else{       
+                        return true;
+                    }     
+            }else if(key == 44){
+                //aviso por pantalla que estamos utilizando (,) para introducir el número decimal
+                alert ("Debes utilizar punto (.) para indroducir números decimales!!!\n si no, no funciona!");
+  
+            }else{
+                //aviso por pantalla que no estas introduciendo números
+    
+                alert ("Quieres operar con letras!!! mejor números!!!");
+                
+            }
+        }
+        }
+        //función para aceptar números, punto para decimales y hasta 4 decimales.
+        function filter(__val__){  
+            var preg = /^([0-9]+\.?[0-9]{0,4})$/;
+            if(preg.test(__val__) === true){
+                return true;
+            }else{
+            return false; 
+            }    
+        }
+        //calculo de la operación.
+        function calcula(operacio){
+            var operando1 = document.calculadora.n1.value;
+            var operando2 = document.calculadora.n2.value; 
+            var result = eval(operando1 + operacio + operando2);
+            document.calculadora.resultado.value = result;
+            if(isNaN(result) === true){
+                alert("0 dividido entre 0 es una indeterminación!!!")
+                result= 0;
+            }
+            if(result == Infinity && result!=0){
+                alert("Cualquier número divido entre 0 es infinito!!!\nPrueba a repartirlo mejor!!!")
+                result=0;
+            }
+        } 
+      </script> 
+       
+ </div>
+</body>
+</html>
