@@ -70,44 +70,48 @@
     </script>
     <br>
     <hr>
-    <h3>Exercici 7: array/bucle</h3> 
+    <h3>Exercici 7: array/for</h3> 
     <script>
         //N1 - Exercici 7 - array
         
         let objectes=["taula", "cadira", "ordinador", "llibreta"];
-        let i = 0;
-        
-        while (i<4) {
+        let i;     
+        for (i=0;i<4;i++) {
             document.write("L'objecte " + objectes[i] + " " + "està a la posició" + " " + i + ". <br>");
-            i++;
         } 
     </script> 
     <br>
     <hr>
-    <h3>Exercici 8: Calculadora v1</h3> 
+    <h3>Exercici 8: Calculadora</h3>
+    
+    <input type="text" id="n1" placeholder="primer número"><br>
+    <input type="text" id="n2" placeholder="segundo número"><br>
+    <input type="button" id="suma" value="+" onclick="suma()">
+    <input type="button" id="resta" value="-" onclick="resta()">
+    <input type="button" id="multiplicacion" value="x" onclick="multiplicacion()"><br>
+    <p id="solucio"></p>
+    
     <script> 
         //N1 - Exercici 8 - Calculadora
-        let suma="suma";
-        let resta="resta";
-        let multiplica="multiplica";
-
-        function calculadora (operador, valor1, valor2){
-                
-            if(operador=="suma"){ 
-                document.write("El resultat de "+valor1+"+"+valor2+" "+"és"+" "+(valor1+valor2)+"<br>");
-
-            } else if (operador=="resta") {
-                document.write("El resultat de "+valor1+"-"+valor2+" "+"és"+" "+(valor1-valor2)+"<br>");
-
-            }else if (operador=="multiplica"){
-                document.write("El resultat de "+valor1+"x"+valor2+" "+"és"+" "+(valor1*valor2)+"<br>");
-            }
+        function suma(){
+            let valor1 = document.getElementById("n1").value;
+            let valor2 = document.getElementById("n2").value;
+            let r=(Number(valor1)+Number(valor2));
+                document.getElementById("solucio").innerHTML = r; 
+        }
+        function resta(){
+            let valor1 = document.getElementById("n1").value;
+            let valor2 = document.getElementById("n2").value;
+            let r=(Number(valor1)-Number(valor2));
+            document.getElementById("solucio").innerHTML = r;  
+        }
+        function multiplicacion(){
+            let valor1 = document.getElementById("n1").value;
+            let valor2 = document.getElementById("n2").value;
+            let r=(Number(valor1)*Number(valor2));
+            document.getElementById("solucio").innerHTML = r;  
         }
     
-        let resultatSuma = calculadora ("suma",40,20);
-        let resultatResta = calculadora ("resta",40,20);
-        let resultatMultiplica = calculadora ("multiplica",40,20);
-
     </script>
     <br>
     <hr>
