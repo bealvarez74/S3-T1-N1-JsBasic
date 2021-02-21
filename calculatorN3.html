@@ -3,39 +3,50 @@
 <meta charset="UTF-8">
 <title>Calculator</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<!--hoja de stilos-->
+<link rel="stylesheet" href="css/style.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <!--google fonts-->
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+
 </head>
 <body>
-    <div class="container" style="max-width:500px; margin:auto; font-family: 'Nunito', sans-serif;">
-      <h1 style="text-align:center">Sprint 03 - Nivell 2<br> Calculadora</h1>
+    <div class="container">
+      <h1>Basic Calculator!</h1>
       <!--interface calculadora-->
-      <form name="calculadora">
-        <label>Primer Número</label><br>
-        <input type="text" name="n1" size="12" placeholder="type a number" onkeypress="return filterFloat(event,this);">
-        <br>
-        <label>Segundo Número</label><br>
-        <input type="text" name="n2" size="12" placeholder="type another number" onkeypress="return filterFloat(event,this);">
-        <br>
-        <label>Operación</label><br>
-        <!--calculamos en un click-->
-        <input type="Button" name="" value=" + " onclick="calcula('+')">
-        <input type="Button" name="" value=" - " onclick="calcula('-')">
-        <input type="Button" name="" value=" x " onclick="calcula('*')">
-        <input type="Button" name="" value=" / " onclick="calcula('/')">
-        <br>
-        <label>Resultado</label><br>
-        <input type="text" name="resultado" placeholder="your result"size="12">
-      </form>    
-    <script>
+      <form name="calculadora" id="formulari">
+        <div id="insideformulari">
+            <input type="text" name="n1" id="num1" size="12" placeholder="type a number" onkeypress="return filterFloat(event,this);">
+            <br>
+            <input type="text" name="n2" id="num2" size="12" placeholder="type another number" onkeypress="return filterFloat(event,this);">
+            <br>
 
+            <!--calculamos en un click-->
+            <input type="button" class="botons" value=" + " onclick="calcula('+')">
+            <input type="button" class="botons" value=" - " onclick="calcula('-')">
+            <input type="button" class="botons" value=" x " onclick="calcula('*')">
+            <input type="button" class="botons" value=" / " onclick="calcula('/')">
+        <br>
+           <!--printamos resultado-->
+        </div>
+        <p class="textres1" id="textsol"></p> 
+        <div class="cajares">
+            <p class="textres2" id="sol"></p>
+            </div>
+            <button id="repeat" class="refresh" onclick="location.reload()">AC</button> 
+      </form>
+      
+    <script>
+        
         //validamos que el valor introducido sea un número, que admita hasta 4 decimales y que su separador sera un punto.
         function filterFloat(evt,input){
         // Backspace = 8, Enter = 13, ‘0′ = 48, ‘9′ = 57, ','= 44, ‘.’ = 46, ‘-’ = 43
         var key = window.Event ? evt.which : evt.keyCode;    
         var chark = String.fromCharCode(key);
         var tempValue = input.value+chark;
+        
         //comprobamos que el teclado corresponda a números
         if(key >= 48 && key <= 57){
             if(filter(tempValue) === false){
@@ -57,42 +68,53 @@
                     }     
             }else if(key == 44){
                 //aviso por pantalla que estamos utilizando (,) para introducir el número decimal
-                alert ("Debes utilizar punto (.) para indroducir números decimales!!!\n si no, no funciona!");
-  
+                alert ("Debes utilizar punto (.) para indroducir números decimales!!!\n si no, no funciona!");  
             }else{
                 //aviso por pantalla que no estas introduciendo números
-    
                 alert ("Quieres operar con letras!!! mejor números!!!");
-                
             }
         }
         }
-        //función para aceptar números, punto para decimales y hasta 4 decimales.
+        
+        //función para aceptar números, punto para decimales y hasta 2 decimales.
         function filter(__val__){  
-            var preg = /^([0-9]+\.?[0-9]{0,4})$/;
+            var preg = /^([0-9]+\.?[0-9]{0,2})$/;
             if(preg.test(__val__) === true){
                 return true;
             }else{
             return false; 
             }    
         }
-        //calculo de la operación.
+
+        //calculo de las operaciones
         function calcula(operacio){
             var operando1 = document.calculadora.n1.value;
             var operando2 = document.calculadora.n2.value; 
-            var result = eval(operando1 + operacio + operando2);
-            document.calculadora.resultado.value = result;
+            var result = eval(operando1+ operacio + operando2);
+            //mostramos el resultado
+            document.getElementById("textsol").innerHTML = (operando1 + operacio + operando2 + "=" ); 
+            document.getElementById("sol").innerHTML = result.toFixed(2);
+
+            //ocultamos interface calculadora       
+            z = document.getElementById("insideformulari");
+            z.style.display="none";
+
+            //mostramos el botón para volver otra vez a la calculadora
+            y = document.getElementById("repeat");
+            y.style.display="block";
+
+            //comprobamos que sea una operación válida
             if(isNaN(result) === true){
-                alert("0 dividido entre 0 es una indeterminación!!!")
-                result= 0;
+                alert("0 dividido entre 0 es una indeterminación!!!");
             }
             if(result == Infinity && result!=0){
                 alert("Cualquier número divido entre 0 es infinito!!!\nPrueba a repartirlo mejor!!!")
-                result=0;
-            }
-        } 
+
+            }    
+        }
+        
       </script> 
        
- </div>
+ </button>
 </body>
 </html>
