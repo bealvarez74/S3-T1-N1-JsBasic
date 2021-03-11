@@ -84,32 +84,20 @@
     <hr>
     <h3>Exercici 8: Calculadora</h3>
     
-    <input type="text" id="n1" placeholder="primer número"><br>
-    <input type="text" id="n2" placeholder="segundo número"><br>
-    <input type="button" id="suma" value="+" onclick="suma()">
-    <input type="button" id="resta" value="-" onclick="resta()">
-    <input type="button" id="multiplicacion" value="x" onclick="multiplicacion()"><br>
-    <p id="solucio"></p>
+    <input type="text" id="num1" value="0"><br>
+    <input type="text" id="num2" value="0"><br>
+    <input type="button" value="+" onclick="calculadora('+')">
+    <input type="button" value="-" onclick="calculadora('-')">
+    <input type="button" value="x" onclick="calculadora('*')">
+    <p id="resultat"></p>
     
     <script> 
-        //N1 - Exercici 8 - Calculadora
-        function suma(){
-            let valor1 = document.getElementById("n1").value;
-            let valor2 = document.getElementById("n2").value;
-            let r=(Number(valor1)+Number(valor2));
-                document.getElementById("solucio").innerHTML = r; 
-        }
-        function resta(){
-            let valor1 = document.getElementById("n1").value;
-            let valor2 = document.getElementById("n2").value;
-            let r=(Number(valor1)-Number(valor2));
-            document.getElementById("solucio").innerHTML = r;  
-        }
-        function multiplicacion(){
-            let valor1 = document.getElementById("n1").value;
-            let valor2 = document.getElementById("n2").value;
-            let r=(Number(valor1)*Number(valor2));
-            document.getElementById("solucio").innerHTML = r;  
+        //N1 - Exercici 8  - Calculadora UPDATE    
+        function calculadora(operador,a1,a2){
+            let n1 = document.getElementById('num1').value;
+            let n2 = document.getElementById('num2').value;
+            let result = eval(n1 + operador + n2);
+            document.getElementById("resultat").innerHTML = result;
         }
     
     </script>
